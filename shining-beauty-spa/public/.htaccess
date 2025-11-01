@@ -1,0 +1,20 @@
+# Vite + React SPA routing on Apache (Hostinger)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  # Do not rewrite existing files or directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  # Redirect all other requests to index.html (React Router)
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Optional: basic caching for static assets in /assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Cache built assets for 1 month
+  <FilesMatch "\.(js|css|woff|woff2|png|jpg|jpeg|gif|svg|webp)$">
+    ExpiresDefault "+1 month"
+  </FilesMatch>
+</IfModule>

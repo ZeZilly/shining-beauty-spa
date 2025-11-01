@@ -67,6 +67,17 @@ export interface GalleryImage {
   created_at: string
 }
 
+// Instagram types
+export interface InstagramPost {
+  id: string
+  caption: string
+  media_type: 'IMAGE' | 'VIDEO' | 'CAROUSEL_ALBUM'
+  media_url: string
+  thumbnail_url?: string | null
+  permalink: string
+  timestamp: string
+}
+
 // Helper functions
 export async function getServices(category?: string) {
   let query = supabase
@@ -167,4 +178,21 @@ export async function createAppointment(appointmentData: {
   }
 
   return await response.json()
+}
+
+export async function getInstagramFeed(limit = 8): Promise<InstagramPost[]> {
+  const endpoint = `${supabaseUrl}/functions/v1/instagram-feed?limit=${limit}`
+  const res = await fetch(endpoint, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${supabaseAnonKey}`
+    }
+  })
+  if (!res.ok) {
+    console.error('Instagram feed error:', await res.text())
+    return []
+  }
+  const json = await res.json()
+  if (!json?.success) return []
+  return json.items as InstagramPost[]
 }

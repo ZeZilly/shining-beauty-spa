@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import InstagramFeed from '@/components/InstagramFeed'
+import ServiceCard from '@/components/ServiceCards'
 import { Seo } from '@/components/seo/Seo'
 import { getServices, getTestimonials, Service, Testimonial } from '@/lib/supabase'
 import { cn } from '@/lib/utils'
@@ -129,7 +130,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Modern Services Section with ServiceCards */}
       <section className="py-20 bg-primary-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -148,7 +149,7 @@ const HomePage = () => {
               {Array.from({ length: 4 }).map((_, index) => (
                 <Card key={index} className="bg-primary border-gold/10">
                   <CardHeader className="space-y-4">
-                    <Skeleton className="h-12 w-12 rounded-full bg-accent/20" />
+                    <Skeleton className="h-20 w-20 rounded-full bg-accent/20" />
                     <Skeleton className="h-6 w-3/4 bg-accent/20" />
                   </CardHeader>
                   <CardContent>
@@ -163,30 +164,12 @@ const HomePage = () => {
           ) : (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
               {categoryPreviews.map((item, index) => (
-                <Card
+                <ServiceCard
                   key={index}
-                  className="group h-full border-gold/20 bg-primary transition-colors hover:border-gold/60 hover:shadow-2xl"
-                >
-                  <Link to={`/hizmetler/${item.service.name.toLowerCase().replace(/\s+/g, '-')}`}>
-                    <CardHeader className="space-y-4">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 text-accent transition-colors group-hover:bg-accent/20">
-                        <Sparkles className="h-7 w-7" aria-hidden />
-                      </div>
-                      <CardTitle className="text-xl font-heading text-gold transition-colors group-hover:text-accent">
-                        {item.category}
-                      </CardTitle>
-                      <CardDescription className="text-beige/70">
-                        {item.service.description}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardFooter className="pt-0">
-                      <Button variant="link" className="gap-2 px-0 text-accent">
-                        Detayları Gör
-                        <ArrowRight className="h-4 w-4" />
-                      </Button>
-                    </CardFooter>
-                  </Link>
-                </Card>
+                  category={item.category}
+                  service={item.service}
+                  index={index}
+                />
               ))}
             </div>
           )}
@@ -194,10 +177,10 @@ const HomePage = () => {
           <div className="text-center mt-12">
             <Link 
               to="/hizmetler"
-              className="inline-flex items-center gap-2 text-accent hover:text-gold transition-colors font-semibold"
+              className="inline-flex items-center gap-2 text-accent hover:text-gold transition-colors font-semibold group"
             >
               Tüm Hizmetleri Gör
-              <i className="fas fa-arrow-right"></i>
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
@@ -211,7 +194,7 @@ const HomePage = () => {
               <img 
                 src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?q=80&w=2070"
                 alt="Shining Beauty&Wellness Interior"
-                className="rounded-2xl shadow-2xl"
+                className="rounded-2xl shadow-2xl hover:shadow-gold/20 transition-shadow duration-300"
               />
             </div>
             <div>
@@ -219,26 +202,26 @@ const HomePage = () => {
               <h2 className="text-4xl font-heading font-bold text-gold mb-6">
                 Shining Beauty&Wellness ile Tanışın
               </h2>
-              <p className="text-beige/80 mb-6">
+              <p className="text-beige/80 mb-6 leading-relaxed">
                 Uzman ekibimiz ve kaliteli ürünlerimizle, güzellik ve sağlığınızı bir bütün olarak ele alıyor, 
                 kişiye özel çözümler sunuyoruz. Modern ve lüks tesisimizde, kendinizi özel hissedeceğiniz 
                 bir atmosfer yaratıyoruz.
               </p>
               <div className="grid grid-cols-3 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gold">5+</div>
+                <div className="text-center group">
+                  <div className="text-3xl font-bold text-gold group-hover:text-accent transition-colors duration-300">5+</div>
                   <div className="text-beige/70 text-sm">Yıllık Deneyim</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gold">1000+</div>
+                <div className="text-center group">
+                  <div className="text-3xl font-bold text-gold group-hover:text-accent transition-colors duration-300">1000+</div>
                   <div className="text-beige/70 text-sm">Mutlu Müşteri</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gold">20+</div>
+                <div className="text-center group">
+                  <div className="text-3xl font-bold text-gold group-hover:text-accent transition-colors duration-300">20+</div>
                   <div className="text-beige/70 text-sm">Özel Tedavi</div>
                 </div>
               </div>
-              <Button asChild className="bg-accent text-primary hover:bg-gold">
+              <Button asChild className="bg-accent text-primary hover:bg-gold transition-all duration-300 shadow-lg hover:shadow-xl">
                 <Link to="/hakkimizda" className="gap-2">
                   Daha Fazla Bilgi
                   <ArrowRight className="h-4 w-4" />
@@ -254,7 +237,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <p className="text-accent text-sm uppercase tracking-widest mb-2">Müşteri Yorumları</p>
-            <h2 className="text-4xl font-heading font-bold text-gold mb-4">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-gold mb-4">
               Bizi Tercih Edenler Ne Diyor?
             </h2>
           </div>
@@ -266,10 +249,10 @@ const HomePage = () => {
           ) : testimonials.length > 0 ? (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {testimonials.map((testimonial) => (
-                <Card key={testimonial.id} className="border-gold/20 bg-primary">
+                <Card key={testimonial.id} className="border-gold/20 bg-primary hover:border-gold/40 transition-all duration-300 hover:shadow-xl">
                   <CardHeader className="space-y-4">
                     <Quote className="h-10 w-10 text-accent" aria-hidden />
-                    <CardDescription className="text-beige/80 italic">
+                    <CardDescription className="text-beige/80 italic leading-relaxed">
                       &ldquo;{testimonial.comment}&rdquo;
                     </CardDescription>
                   </CardHeader>
@@ -310,13 +293,13 @@ const HomePage = () => {
           <h2 className="text-4xl font-heading font-bold text-gold mb-6">
             Kendinize Değer Vermeye Hazır mısınız?
           </h2>
-          <p className="text-beige/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-beige/80 mb-8 max-w-2xl mx-auto leading-relaxed">
             Hemen randevu alın ve Shining Beauty&Wellness deneyimini yaşayın
           </p>
           <Button
             asChild
             size="lg"
-            className="gap-2 bg-accent text-primary font-bold shadow-lg hover:bg-gold hover:shadow-xl"
+            className="gap-2 bg-accent text-primary font-bold shadow-lg hover:bg-gold hover:shadow-xl transition-all duration-300"
           >
             <Link to="/iletisim">
               Randevu Al

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "framework": "vite",
+  "buildCommand": "cd shining-beauty-spa/shining-beauty-spa && pnpm install --prefer-offline && pnpm run build:prod",
+  "installCommand": "cd shining-beauty-spa/shining-beauty-spa && pnpm install --prefer-offline",
+  "outputDirectory": "shining-beauty-spa/shining-beauty-spa/dist",
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
