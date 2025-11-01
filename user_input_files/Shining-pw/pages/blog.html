@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Shining Beauty Spa & Wellness</title>
+    <meta name="description" content="Güzellik, sağlık ve wellness hakkında uzman yazıları ve ipuçları.">
+    <link rel="icon" type="image/png" href="../shining logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center">
+                <img src="../shining logo.png" alt="Shining Beauty" class="h-12 w-auto">
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="../index.html" class="nav-link">Ana Sayfa</a>
+                <a href="hakkimizda.html" class="nav-link">Hakkımızda</a>
+                <a href="hizmetler.html" class="nav-link">Hizmetler</a>
+                <a href="galeri.html" class="nav-link">Galeri</a>
+                <a href="blog.html" class="nav-link active">Blog</a>
+                <a href="iletisim.html" class="nav-link">İletişim</a>
+            </div>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-primary to-primary-light">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold text-accent mb-6">Blog</h1>
+            <p class="text-xl text-text-light max-w-3xl mx-auto">
+                Güzellik, sağlık ve wellness dünyasından en güncel bilgiler
+            </p>
+        </div>
+    </section>
+
+    <!-- Search & Filter -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+                <div class="relative flex-1 max-w-md">
+                    <input type="text" id="searchInput" placeholder="Blog yazılarında ara..." 
+                           class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+                <div class="flex gap-2">
+                    <button class="filter-btn active" data-category="all">Tümü</button>
+                    <button class="filter-btn" data-category="cilt-bakimi">Cilt Bakımı</button>
+                    <button class="filter-btn" data-category="wellness">Wellness</button>
+                    <button class="filter-btn" data-category="saglik">Sağlık</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">Öne Çıkan Yazı</h2>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="../images/blog-featured.jpg" alt="Öne Çıkan" class="w-full h-64 md:h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <span class="text-accent font-semibold">Cilt Bakımı</span>
+                        <h3 class="text-2xl font-bold text-primary mt-2 mb-4">Kış Aylarında Cilt Bakımının Önemi</h3>
+                        <p class="text-gray-600 mb-4">Soğuk hava ve düşük nem oranı cildinizi nasıl etkiler? Kış aylarında cildinizi korumak için...</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">15 Aralık 2024</span>
+                            <a href="blog/kis-cilt-bakimi.html" class="btn-primary">Devamını Oku</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div id="blogGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog posts will be loaded here -->
+            </div>
+            <div class="text-center mt-12">
+                <button id="loadMore" class="btn-secondary">Daha Fazla Yükle</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-accent mb-6">Blog Güncellemelerini Kaçırmayın</h2>
+            <p class="text-xl mb-8">Yeni yazılarımızdan haberdar olmak için e-posta listemize katılın</p>
+            <form class="max-w-md mx-auto flex gap-4">
+                <input type="email" placeholder="E-posta adresiniz" 
+                       class="flex-1 px-4 py-2 rounded-lg text-gray-800 focus:outline-none">
+                <button type="submit" class="btn-primary">Abone Ol</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="../shining logo.png" alt="Shining Beauty" class="h-16 mb-4">
+                    <p class="text-gray-300">Adana'nın en modern spa ve wellness merkezi</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Hızlı Linkler</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-300 hover:text-accent">Ana Sayfa</a></li>
+                        <li><a href="hakkimizda.html" class="text-gray-300 hover:text-accent">Hakkımızda</a></li>
+                        <li><a href="hizmetler.html" class="text-gray-300 hover:text-accent">Hizmetler</a></li>
+                        <li><a href="galeri.html" class="text-gray-300 hover:text-accent">Galeri</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">İletişim</h4>
+                    <p class="text-gray-300 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Gazipaşa, Adana</p>
+                    <p class="text-gray-300 mb-2"><i class="fas fa-phone mr-2"></i>+90 505 071 95 01</p>
+                    <p class="text-gray-300"><i class="fas fa-envelope mr-2"></i>shinings.pw@ud.me</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Sosyal Medya</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl text-gray-300 hover:text-accent"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl text-gray-300 hover:text-accent"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl text-gray-300 hover:text-accent"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 Shining Beauty. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/blog.js"></script>
+</body>
+</html>

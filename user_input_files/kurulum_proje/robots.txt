@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://shining-beauty.manus.space/sitemap.xml
+
+# Disallow admin pages
+Disallow: /admin/
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /hizmetler
+Allow: /hizmet/
+Allow: /randevu
+Allow: /blog/
+Allow: /iletisim
+Allow: /hakkimizda

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shining Beauty | Spa ve Wellness Merkezi</title>
+    <meta name="description" content="Shining Beauty Spa & Wellness Merkezi: Adana'nın en modern ve lüks spa merkezi. Profesyonel ekibimizle cilt bakımı, masaj, wellness ve daha fazlası. Şimdi randevu alın!">
+    <meta name="keywords" content="spa, wellness, güzellik, masaj, cilt bakımı, Adana, shining beauty, shining beauty wellness, shining beauty spa">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Shining Beauty">
+    <meta property="og:title" content="Shining Beauty | Spa ve Wellness Merkezi">
+    <meta property="og:description" content="Adana'nın en modern ve lüks spa & wellness merkezi. Şimdi randevu alın, kendinizi ödüllendirin!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shiningbeauty.com.tr/">
+    <meta property="og:image" content="/shining logo.png">
+    <link rel="canonical" href="https://shiningbeauty.com.tr/" />
+    <link rel="icon" type="image/png" href="/shining logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #181818;
+            --primary-dark: #111111;
+            --primary-light: #35312d;
+            --accent: #d9b36a;
+            --accent-light: #f7ecd4;
+            --text-dark: #e8decf;
+            --text-light: #fff;
+            --social-bg: #23201c;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 70%, var(--accent-light) 100%);
+            min-height: 100vh;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        .handwritten {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-size: 3.2rem;
+            color: var(--accent);
+            margin-bottom: 0.7rem;
+            text-shadow: 0 2px 8px #0002;
+        }
+        .section-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        /* Modern Navbar */
+        .modern-navbar {
+            position: sticky;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+            background: rgba(24, 24, 24, 0.98);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 2px 16px 0 rgba(217,179,106,0.12);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            height: 48px;
+            width: 48px;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px #0002;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 968px) {
+            .nav-toggle {
+                display: block;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0.5rem;
+                z-index: 100;
+            }
+
+            .hamburger {
+                display: block;
+                position: relative;
+                width: 24px;
+                height: 2px;
+                background: var(--accent);
+                transition: all 0.3s ease-in-out;
+            }
+
+            .hamburger::before,
+            .hamburger::after {
+                content: '';
+                position: absolute;
+                width: 24px;
+                height: 2px;
+                background: var(--accent);
+                transition: all 0.3s ease-in-out;
+            }
+
+            .hamburger::before { transform: translateY(-8px); }
+            .hamburger::after { transform: translateY(8px); }
+
+            .nav-toggle.nav-open .hamburger {
+                background: transparent;
+            }
+
+            .nav-toggle.nav-open .hamburger::before {
+                transform: rotate(45deg);
+            }
+
+            .nav-toggle.nav-open .hamburger::after {
+                transform: rotate(-45deg);
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: rgba(24, 24, 24, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                transition: right 0.3s ease-in-out;
+                padding: 2rem;
+            }
+
+            .nav-links.nav-active {
+                right: 0;
+            }
+
+            .nav-social {
+                margin-top: 2rem;
+            }
+        }
+        .modern-navbar.scrolled {
+            background: rgba(24, 24, 24, 0.85);
+            box-shadow: 0 4px 24px 0 rgba(217,179,106,0.22);
+        }
+        .modern-navbar .logo {
+            font-size: 2rem;
+            font-family: 'Pacifico', cursive;
+            color: var(--accent);
+            margin-left: 32px;
+            letter-spacing: 1px;
+        }
+        .modern-navbar .nav-link {
+            color: var(--text-light);
+            font-weight: 500;
+            margin: 0 16px;
+            padding: 7px 16px;
+            border-radius: 9px;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            font-size: 1.08rem;
+        }
+        .modern-navbar .nav-link:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+            transform: translateY(-2px) scale(1.07);
+            box-shadow: 0 2px 8px #d9b36a33;
+        }
+        /* Modern Social Icons */
+        .modern-social {
+            position: fixed;
+            left: 24px;
+            bottom: 24px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .modern-social a {
+            width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            background: var(--social-bg);
+            box-shadow: 0 2px 8px #0002;
+            font-size: 1rem;
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .modern-social a:hover {
+            transform: scale(1.16);
+            box-shadow: 0 4px 16px #0003;
+        }
+        .modern-social .instagram {
+            background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            color: #fff;
+        }
+        .modern-social .whatsapp {
+            background: #25d366;
+            color: #fff;
+        }
+        .modern-social .facebook {
+            background: #1877f3;
+            color: #fff;
+        }
+        /* Inline Social Icon Bar */
+        .inline-social {
+            display: inline-flex;
+            gap: 8px;
+            vertical-align: middle;
+        }
+        .inline-social a {
+            width: 22px; height: 22px;
+            font-size: 0.95rem;
+        }
+        /* Footer & Others modernized ... */
+        .modern-footer {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: var(--accent);
+            padding: 48px 0 24px 0;
+            margin-top: 0;
+            border-radius: 32px 32px 0 0;
+        }
+        .modern-footer a { color: var(--accent); opacity: 0.7; margin: 0 8px; }
+        .modern-footer a:hover { opacity: 1; }
+        .modern-footer .footer-social a {
+            margin: 0 6px;
+            font-size: 1.1rem;
+            vertical-align: middle;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary-dark);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: var(--accent-light);
+            color: var(--primary-dark);
+        }
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+        .section-title {
+            color: var(--accent);
+        }
+        .service-card {
+            background: var(--primary-light);
+            color: var(--accent-light);
+        }
+        .service-card:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+        .social-icon {
+            box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12);
+            transition: transform 0.18s cubic-bezier(.4,2,.6,1);
+            opacity: 0.95;
+        }
+        .social-icon:hover {
+            opacity: 1;
+            box-shadow: 0 6px 24px 0 rgba(0,0,0,0.18);
+            transform: scale(1.12);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Social Icons (sol alt sabit) -->
+    <div class="modern-social">
+        <a href="https://www.instagram.com/shining.beauty.wellness?igsh=aDBpcDRidHN1cmdp" class="instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/905050719501" class="whatsapp" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61572925680179" class="facebook" target="_blank" aria-label="Facebook" style="background:#1877f3;color:#fff;"><i class="fab fa-facebook-f"></i></a>
+    </div>
+    <!-- Navbar -->
+    <nav id="navbar" class="modern-navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="shining logo.png" alt="Shining Beauty Logo" class="nav-logo" />
+                <span class="logo">Shining Beauty</span>
+            </div>
+            
+            <button class="nav-toggle" aria-label="toggle navigation" onclick="toggleNav()">
+                <span class="hamburger"></span>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Ana Sayfa</a>
+                <a href="pages/hakkimizda.html" class="nav-link">Hakkımızda</a>
+                <a href="pages/hizmetler.html" class="nav-link">Hizmetler</a>
+                <a href="pages/galeri.html" class="nav-link">Galeri</a>
+                <a href="pages/blog.html" class="nav-link">Blog</a>
+                <a href="pages/iletisim.html" class="nav-link">İletişim</a>
+                <a href="pages/musteri-paneli.html" class="nav-link">Müşteri Paneli</a>
+                
+                <div class="nav-social">
+                    <a href="https://www.instagram.com/shining.beauty.wellness?igsh=aDBpcDRidHN1cmdp" class="instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/905050719501" class="whatsapp" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61572925680179" class="facebook" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section with Video Background -->
+    <section id="home" class="hero-section flex items-center justify-center min-h-[70vh] relative overflow-hidden" style="background: #181818;">
+        <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-60" style="pointer-events: none;"></video>
+        <div class="relative z-10 flex flex-col items-center justify-center w-full h-full text-center py-20">
+            <h1 class="font-bold text-4xl md:text-6xl mb-2 text-accent drop-shadow-xl">Shining Beauty & Wellness</h1>
+            <div class="mb-6">
+                <span class="block handwritten text-2xl md:text-3xl text-accent-light" style="font-family: 'Dancing Script', cursive;">Shining Beauty ile Kendinizi Yeniden Keşfedin</span>
+            </div>
+            <div class="flex gap-6 justify-center">
+                <a href="pages/hizmetler.html" class="cta-btn transition-transform transform hover:scale-105">Hizmetlerimizi Keşfet</a>
+                <a href="pages/iletisim.html" class="cta-btn transition-transform transform hover:scale-105" style="background:transparent;border:2px solid var(--accent);color:var(--accent);">Hemen Randevu Al</a>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent pointer-events-none"></div>
+    </section>
+    <!-- Hakkımızda -->
+    <section id="about" class="py-20 bg-primary-light text-accent-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-accent">Hakkımızda</h2>
+                <p class="text-lg max-w-2xl mx-auto">Shining Beauty, Gazipaşa, Adana'da konumlanan, lüks ve modern yaşamı vurgulayan bir güzellik, spa ve wellness merkezidir. Misyonumuz, müşterilerimize huzur ve sağlıklı yaşam deneyimi sunmaktır.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-6 text-accent">Shining Beauty ile Tanışın</h3>
+                    <p class="text-lg mb-6">Uzman ekibimiz ve kaliteli ürünlerimizle, güzellik ve sağlığınızı bir bütün olarak ele alıyor, kişiye özel çözümler sunuyoruz. Modern ve lüks tesisimizde, kendinizi özel hissedeceğiniz bir atmosfer yaratıyoruz.</p>
+                    <p class="text-lg mb-8">Gazipaşa, Adana'da lüks ve modern yaşamı vurgulayan, huzur ve sağlıklı yaşam deneyimi sunan özel bir mekan.</p>
+                    <div class="flex items-center gap-8">
+                        <div>
+                            <h3 class="text-3xl font-bold text-accent">5+</h3>
+                            <p class="text-accent-light">Yıllık Deneyim</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-accent">1000+</h3>
+                            <p class="text-accent-light">Mutlu Müşteri</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-accent">20+</h3>
+                            <p class="text-accent-light">Özel Tedavi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Spa Interior" class="rounded-lg shadow-xl w-full h-auto">
+                        <div class="absolute -bottom-10 -left-10 hidden md:block">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Treatment" class="rounded-lg shadow-xl w-48 h-48 object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- OZEL BAKIM HIZMETLERIMIZ -->
+    <section id="services" class="py-20 bg-primary text-accent-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <div class="text-2xl font-bold text-accent mb-2">ÖZEL BAKIM</div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-accent">Hizmetlerimiz</h2>
+                <p class="text-base md:text-lg mb-7 max-w-2xl mx-auto">En yeni güzellik trendlerini, en etkili uygulamalarla buluşturduğumuz Shining Güzellik Merkezi'nde, güzelliğinizi yeniden keşfetmeye hazır mısınız? Cildiniz, bedeniniz ve ruhunuz için kapsamlı bakım çözümleri burada! Shining Güzellik Merkezi olarak uzman kadromuz, hijyenik ortamımız ve son teknoloji cihazlarımızla; cilt bakımı, lazer epilasyon, medikal uygulamalar ve daha fazlasını sunuyoruz. Güzelliğinize değer katmak, kendinizi yeniden keşfetmek ve yenilenmiş hissedebilmeniz için buradayız. Size özel çözümler ve kişisel dokunuşlarla, her detayda fark yaratıyoruz!</p>
+            </div>
+            <!-- ... (hizmet kartları aynı kalacak) ... -->
+        </div>
+    </section>
+    <!-- Yorumlar/Testimonial Bölümü -->
+    <section id="testimonials" class="py-20 bg-primary-light text-accent-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="section-heading">Müşteri Yorumları</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-accent mb-4">Bizi Tercih Edenler Ne Diyor?</h2>
+                <p class="max-w-2xl mx-auto text-lg">Shining Beauty Spa & Wellness Merkezi'nde misafirlerimizin memnuniyeti bizim için en önemli önceliktir. İşte bazı gerçek müşteri yorumlarımız:</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Yorum Kartı 1 -->
+                <div class="bg-primary rounded-xl shadow-lg p-6 flex flex-col items-start fade-in border border-accent">
+                    <div class="flex items-center mb-3">
+                        <span class="font-bold text-accent text-lg mr-2">Ayşe K.</span>
+                        <span class="flex text-accent">★★★★★</span>
+                    </div>
+                    <p class="text-accent-light mb-2">"Hayatımda aldığım en iyi masajdı! Ortam çok temiz ve huzurlu, çalışanlar çok ilgili. Herkese tavsiye ederim."</p>
+                </div>
+                <!-- Yorum Kartı 2 -->
+                <div class="bg-primary rounded-xl shadow-lg p-6 flex flex-col items-start fade-in border border-accent">
+                    <div class="flex items-center mb-3">
+                        <span class="font-bold text-accent text-lg mr-2">Zeynep T.</span>
+                        <span class="flex text-accent">★★★★★</span>
+                    </div>
+                    <p class="text-accent-light mb-2">"Kafa masajı inanılmazdı! Tüm stresimden arındım, kendimi yeniden doğmuş gibi hissediyorum. Kesinlikle tekrar geleceğim."</p>
+                </div>
+                <!-- Yorum Kartı 3 -->
+                <div class="bg-primary rounded-xl shadow-lg p-6 flex flex-col items-start fade-in border border-accent">
+                    <div class="flex items-center mb-3">
+                        <span class="font-bold text-accent text-lg mr-2">Elif S.</span>
+                        <span class="flex text-accent">★★★★★</span>
+                    </div>
+                    <p class="text-accent-light mb-2">"Modern ve hijyenik bir merkez. Spa paketleri harika, kendimi çok özel hissettim. Teşekkürler Shining Beauty!"</p>
+                </div>
+                <!-- Yorum Kartı 4 -->
+                <div class="bg-primary rounded-xl shadow-lg p-6 flex flex-col items-start fade-in border border-accent">
+                    <div class="flex items-center mb-3">
+                        <span class="font-bold text-accent text-lg mr-2">Burcu Y.</span>
+                        <span class="flex text-accent">★★★★★</span>
+                    </div>
+                    <p class="text-accent-light mb-2">"Kafa masajı sonrası baş ağrılarım geçti, kendimi çok daha dinç ve huzurlu hissediyorum. Emeği geçen herkese teşekkürler!"</p>
+                </div>
+                <!-- Yorum Kartı 5 -->
+                <div class="bg-primary rounded-xl shadow-lg p-6 flex flex-col items-start fade-in border border-accent">
+                    <div class="flex items-center mb-3">
+                        <span class="font-bold text-accent text-lg mr-2">Seda A.</span>
+                        <span class="flex text-accent">★★★★★</span>
+                    </div>
+                    <p class="text-accent-light mb-2">"Her şey mükemmeldi! Güler yüzlü ekip ve huzurlu ortam sayesinde kendimi çok özel hissettim. Tekrar geleceğim."</p>
+                </div>
+                <!-- Yorum Kartı 6 -->
+                <div class="bg-primary rounded-xl shadow-lg p-6 flex flex-col items-start fade-in border border-accent">
+                    <div class="flex items-center mb-3">
+                        <span class="font-bold text-accent text-lg mr-2">Nazlı B.</span>
+                        <span class="flex text-accent">★★★★★</span>
+                    </div>
+                    <p class="text-accent-light mb-2">"Kafa masajı ile tüm yorgunluğumdan arındım. Uzman ellerde olduğumu hissetmek harikaydı! Şiddetle tavsiye ederim."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Instagram Feed Section -->
+    <section id="instagram" class="py-20 bg-primary-dark">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 fade-in">
+                <span class="section-heading">Instagram'da Biz</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2 text-accent flex items-center justify-center gap-2">
+                    <i class="fab fa-instagram text-pink-500 text-3xl"></i>
+                    @shining.beauty.wellness
+                </h2>
+            </div>
+            <!-- Bilgilendirme kutusu -->
+            <div class="max-w-xl mx-auto bg-accent text-primary-dark rounded-xl p-5 shadow-lg mb-10 text-center text-base font-semibold">
+                Yeni yerimizde sizlere profesyonel ekibimiz ile daha kapsamlı hizmet vermeye hazırız.😍
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 fade-in mb-8">
+                <!-- Instagram Reel 1 -->
+                <a href="https://www.instagram.com/reel/DIei4dMqrWP/" target="_blank" class="group relative block rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Reel 1" class="w-full h-40 object-cover group-hover:opacity-80 transition-opacity" />
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/40">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </a>
+                <!-- Instagram Reel 2 -->
+                <a href="https://www.instagram.com/reel/DDM_spFoAwB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group relative block rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
+                    <img src="reel2.png" alt="Reel 2" class="w-full h-40 object-cover group-hover:opacity-80 transition-opacity" />
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/40">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </a>
+                <!-- Instagram Reel 3 -->
+                <a href="https://www.instagram.com/reel/DCo9MRSt-PA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="group relative block rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
+                    <img src="reel3.png" alt="Reel 3" class="w-full h-40 object-cover group-hover:opacity-80 transition-opacity" />
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/40">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </a>
+                <!-- Instagram Reel 4 -->
+                <a href="https://www.instagram.com/reel/DFfrzCCoK20/" target="_blank" class="group relative block rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Reel 4" class="w-full h-40 object-cover group-hover:opacity-80 transition-opacity" />
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/40">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </a>
+                <!-- Instagram Reel 5 -->
+                <a href="https://www.instagram.com/reel/DEsHnbCIg2e/" target="_blank" class="group relative block rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Reel 5" class="w-full h-40 object-cover group-hover:opacity-80 transition-opacity" />
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/40">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </a>
+                <!-- Instagram Reel 6 -->
+                <a href="https://www.instagram.com/reel/DEnJQB_ocRQ/" target="_blank" class="group relative block rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Reel 6" class="w-full h-40 object-cover group-hover:opacity-80 transition-opacity" />
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/40">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="text-center fade-in">
+                <a href="https://www.instagram.com/shining.beauty.wellness/" target="_blank" class="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white font-bold text-lg shadow-lg hover:scale-105 transition-transform">
+                    <i class="fab fa-instagram mr-2"></i>Bizi Instagram'da Takip Edin
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section bg-primary-light text-accent-light">
+        <div class="container mx-auto">
+            <h2 class="section-title fade-in text-accent">Blog</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="bg-primary rounded-lg overflow-hidden shadow-lg fade-in border border-accent">
+                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-accent">Spa'da Rahatlamanın 5 Yolu</h3>
+                        <p class="text-accent-light text-sm mb-4">15 Mayıs 2025 • Spa</p>
+                        <p class="text-accent-light mb-4">Spa merkezlerinde rahatlamanın yolları, masajdan aromaterapiye kadar birçok farklı uygulamayı içerir. Bu yazımızda en etkili 5 yöntemi keşfedin...</p>
+                        <a href="#" class="text-accent hover:text-accent-light font-medium flex items-center">Devamını Oku <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+                <!-- Blog Post 2 -->
+                <div class="bg-primary rounded-lg overflow-hidden shadow-lg fade-in border border-accent">
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-accent">Doğal İçerikli Cilt Bakım Ürünleri</h3>
+                        <p class="text-accent-light text-sm mb-4">8 Mayıs 2025 • Cilt Bakımı</p>
+                        <p class="text-accent-light mb-4">Cildinize zarar vermeden doğal içerikli ürünlerle bakım yapmak mümkün. Evde hazırlayabileceğiniz doğal maskeler ve günlük cilt bakım rutininize ekleyebileceğiniz...</p>
+                        <a href="#" class="text-accent hover:text-accent-light font-medium flex items-center">Devamını Oku <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+                <!-- Blog Post 3 -->
+                <div class="bg-primary rounded-lg overflow-hidden shadow-lg fade-in border border-accent">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-accent">Yaz Aylarında Cilt Bakımı</h3>
+                        <p class="text-accent-light text-sm mb-4">1 Mayıs 2025 • Mevsimsel Bakım</p>
+                        <p class="text-accent-light mb-4">Yaz ayları, cildiniz için ekstra koruma ve bakım gerektiren bir dönemdir. Güneş, nem ve sıcaklık değişimleri cilt sağlığınızı etkileyebilir. Bu yazımızda...</p>
+                        <a href="#" class="text-accent hover:text-accent-light font-medium flex items-center">Devamını Oku <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4 fade-in"> 
+                <a href="#" class="btn btn-outline">Tüm Blog Yazılarını Görüntüle</a>
+            </div>
+        </div>
+    </section>
+    <!-- Appointment Section -->
+    <section id="appointment" class="section bg-primary text-accent-light">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-center gap-10 py-14">
+            <!-- Contact Info -->
+            <div class="md:w-2/5 w-full flex flex-col items-center md:items-end text-lg gap-6">
+                <div class="bg-primary-light/80 rounded-xl shadow-lg p-8 w-full max-w-md">
+                    <div class="mb-4">
+                        <span class="block text-accent text-xl font-bold mb-2">Adres</span>
+                        <span class="block">Gazipaşa Rezidansa, Adana, Türkiye</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="block text-accent text-xl font-bold mb-2">Telefon</span>
+                        <span class="block">+90 505 071 95 01</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="block text-accent text-xl font-bold mb-2">E-posta</span>
+                        <span class="block">shinings.pw@ud.me</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="block text-accent text-xl font-bold mb-2">Çalışma Saatleri</span>
+                        <span class="block">Pazartesi - Cumartesi: 10:00 - 20:00</span><br>
+                        <span class="block">Pazar: 11:00 - 18:00</span>
+                    </div>
+                    <!-- Sosyal Medya İkonları -->
+                    <div class="flex justify-center gap-5 mt-6">
+                        <a href="https://www.instagram.com/shining.beauty.wellness?igsh=aDBpcDRidHN1cmdp" target="_blank" aria-label="Instagram" class="social-icon bg-gradient-to-tr from-pink-500 to-yellow-400 text-white shadow-lg hover:scale-110 transition-transform rounded-full w-12 h-12 flex items-center justify-center text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/905050719501" target="_blank" aria-label="WhatsApp" class="social-icon bg-gradient-to-tr from-green-400 to-green-700 text-white shadow-lg hover:scale-110 transition-transform rounded-full w-12 h-12 flex items-center justify-center text-2xl"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61572925680179" target="_blank" aria-label="Facebook" class="social-icon bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-lg hover:scale-110 transition-transform rounded-full w-12 h-12 flex items-center justify-center text-2xl"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Appointment Form -->
+            <div class="md:w-3/5 w-full flex flex-col items-center">
+                <div class="bg-primary-light p-8 rounded-lg shadow-lg w-full max-w-xl">
+                    <h2 class="section-title fade-in text-accent mb-4 text-3xl font-bold">Randevu Al</h2>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-accent text-sm font-bold mb-2">Ad Soyad *</label>
+                            <input type="text" id="name" class="w-full px-3 py-2 border border-accent rounded-md focus:outline-none focus:ring-2 focus:ring-accent bg-primary text-accent-light" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-accent text-sm font-bold mb-2">E-posta *</label>
+                            <input type="email" id="email" class="w-full px-3 py-2 border border-accent rounded-md focus:outline-none focus:ring-2 focus:ring-accent bg-primary text-accent-light" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-accent text-sm font-bold mb-2">İletmek İstediğiniz Mesaj</label>
+                            <textarea id="message" rows="4" class="w-full px-3 py-2 border border-accent rounded-md focus:outline-none focus:ring-2 focus:ring-accent bg-primary text-accent-light" placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn btn-primary">Randevu Talebi Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Harita Bölümü -->
+    <section id="map" class="relative">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6372.837124670473!2d35.315887033939354!3d36.99980974629298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15288f4c2b09d897%3A0x23c0b18e113de1c2!2sGazipa%C5%9Fa%20Rezidansa!5e0!3m2!1sen!2sno!4v1744955311349!5m2!1sen!2sno" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+    <!-- Footer -->
+    <footer class="modern-footer pt-12 pb-4 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="footer-brand mb-8 md:mb-0 flex flex-col items-start">
+                <!-- Büyük ve net logo -->
+                <img src="shining logo.png" alt="Shining Beauty Logo" style="width:140px;max-width:90vw;height:auto;margin-bottom:18px;display:block;border-radius:18px;background:rgba(0,0,0,0.10);box-shadow:0 4px 16px 0 rgba(0,0,0,0.14);object-fit:contain;" />
+                <!-- Mat sosyal medya ikonları -->
+                <div class="footer-social flex gap-3 mb-3">
+                    <a href="https://www.instagram.com/shining.beauty.wellness?igsh=aDBpcDRidHN1cmdp" target="_blank" aria-label="Instagram" style="color:#fff;background:#23201c;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0.7;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/905050719501" target="_blank" aria-label="WhatsApp" style="color:#fff;background:#23201c;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0.7;"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61572925680179" target="_blank" aria-label="Facebook" style="color:#fff;background:#23201c;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0.7;"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <span class="footer-logo-text text-accent font-bold text-2xl mb-2 block">Shining Beauty</span>
+                <p class="mb-4 max-w-xs">Gazipaşa, Adana'da konumlanan, lüks ve modern yaşamı vurgulayan bir güzellik, spa ve wellness merkezi.</p>
+            </div>
+            <div class="footer-links mb-8 md:mb-0">
+                <span class="font-bold text-accent mb-2 block">Hızlı Bağlantılar</span>
+                <ul class="space-y-1">
+                    <li><a href="#home">Ana Sayfa</a></li>
+                    <li><a href="#about">Hakkımızda</a></li>
+                    <li><a href="#services">Hizmetler</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <span class="font-bold text-accent mb-2 block">İletişim</span>
+                <ul class="space-y-1">
+                    <li><i class="fas fa-map-marker-alt mr-2"></i>Gazipaşa, Adana</li>
+                    <li><i class="fas fa-phone-alt mr-2"></i>+90 505 071 95 01</li>
+                    <li><i class="fas fa-envelope mr-2"></i>shinings.pw@ud.me</li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-xs text-accent-light mt-8">
+            &copy; 2025 Shining Beauty Spa ve Wellness Merkezi. Tüm hakları saklıdır. · Gizlilik Politikası · Şartlar ve Koşullar · KVKK
+        </div>
+    </footer>
+    <script>
+        // Navbar functionality
+        function toggleNav() {
+            document.querySelector('.nav-links').classList.toggle('nav-active');
+            document.querySelector('.nav-toggle').classList.toggle('nav-open');
+        }
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('nav-active');
+                document.querySelector('.nav-toggle').classList.remove('nav-open');
+            });
+        });
+
+        // Navbar scroll transparency
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if(window.scrollY > 20) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+    </script>
+    <style>
+        .modern-footer { margin-top: 0 !important; }
+    </style>
+</body>
+</html>

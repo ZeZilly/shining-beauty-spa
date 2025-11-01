@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim & Online Randevu | Shining Beauty</title>
+    <meta name="description" content="Shining Beauty ile iletişime geçin ve online randevu alın.">
+    <link rel="icon" type="image/png" href="../shining logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/appointment.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center">
+                <img src="../shining logo.png" alt="Shining Beauty" class="h-12 w-auto">
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="../index.html" class="nav-link">Ana Sayfa</a>
+                <a href="hakkimizda.html" class="nav-link">Hakkımızda</a>
+                <a href="hizmetler.html" class="nav-link">Hizmetler</a>
+                <a href="galeri.html" class="nav-link">Galeri</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="iletisim.html" class="nav-link active">İletişim</a>
+            </div>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-primary to-primary-light">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold text-accent mb-6">İletişim & Randevu</h1>
+            <p class="text-xl text-text-light max-w-3xl mx-auto">
+                Bizimle iletişime geçin veya online randevu alın
+            </p>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="showAppointmentForm()" class="btn-primary">
+                    <i class="fas fa-calendar-plus mr-2"></i>Online Randevu Al
+                </button>
+                <a href="tel:+905050719501" class="btn-secondary">
+                    <i class="fas fa-phone mr-2"></i>Hemen Ara
+                </a>
+                <a href="https://wa.me/905050719501" target="_blank" class="btn-secondary">
+                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-3xl font-bold text-primary mb-8">İletişim Bilgileri</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="p-3 bg-accent rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary mb-1">Adres</h3>
+                                <p class="text-gray-600">Gazipaşa Mahallesi<br>Adana, Türkiye</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="p-3 bg-accent rounded-full mr-4">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary mb-1">Telefon</h3>
+                                <p class="text-gray-600">+90 505 071 95 01</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="p-3 bg-accent rounded-full mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary mb-1">E-posta</h3>
+                                <p class="text-gray-600">shinings.pw@ud.me</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="p-3 bg-accent rounded-full mr-4">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary mb-1">Çalışma Saatleri</h3>
+                                <p class="text-gray-600">
+                                    Pazartesi - Cumartesi: 09:00 - 20:00<br>
+                                    Pazar: 10:00 - 18:00
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="mt-8">
+                        <h3 class="font-bold text-primary mb-4">Sosyal Medya</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="p-3 bg-primary text-accent rounded-full hover:bg-accent hover:text-white transition-colors">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="p-3 bg-primary text-accent rounded-full hover:bg-accent hover:text-white transition-colors">
+                                <i class="fab fa-facebook text-xl"></i>
+                            </a>
+                            <a href="#" class="p-3 bg-primary text-accent rounded-full hover:bg-accent hover:text-white transition-colors">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-primary mb-6">Bize Ulaşın</h2>
+                    <form id="contact-form">
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Ad Soyad *</label>
+                                <input type="text" name="name" required 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Telefon *</label>
+                                <input type="tel" name="phone" required 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-2">E-posta</label>
+                            <input type="email" name="email" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-2">Konu</label>
+                            <select name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                <option value="">Konu Seçin</option>
+                                <option value="randevu">Randevu</option>
+                                <option value="bilgi">Bilgi Almak</option>
+                                <option value="sikayet">Şikayet</option>
+                                <option value="oneri">Öneri</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-2">Mesaj *</label>
+                            <textarea name="message" rows="4" required 
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-primary">
+                            <i class="fas fa-paper-plane mr-2"></i>Mesaj Gönder
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-primary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-accent mb-8">Konum</h2>
+            <div class="h-96 rounded-lg overflow-hidden shadow-lg">
+                <div id="map" class="w-full h-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function initMap() {
+            const location = { lat: 37.0000, lng: 35.3213 }; // Adana koordinatları
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: location,
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#181818"}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#d9b36a"}]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#35312d"}]
+                    }
+                ]
+            });
+            
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: "Shining Beauty Spa & Wellness",
+                icon: {
+                    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#d9b36a">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    `),
+                    scaledSize: new google.maps.Size(40, 40)
+                }
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOWTgHz-EGE7RQBFWXS&callback=initMap"></script>
+
+    <!-- Appointment Modal -->
+    <div id="appointment-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 w-full max-w-4xl max-h-screen overflow-y-auto m-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-primary">Online Randevu</h2>
+                <button onclick="closeAppointmentForm()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+
+            <div id="appointment-steps" class="space-y-6">
+                <!-- Step 1: Service Selection -->
+                <div id="step-1" class="appointment-step active">
+                    <h3 class="text-xl font-bold mb-4">1. Hizmet Seçimi</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="service-option" data-service="cilt-bakimi" data-duration="60" data-price="300">
+                            <div class="p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-accent transition-colors">
+                                <i class="fas fa-spa text-2xl text-accent mb-2"></i>
+                                <h4 class="font-bold">Klasik Cilt Bakımı</h4>
+                                <p class="text-sm text-gray-600">60 dakika</p>
+                                <p class="font-bold text-accent">₺300</p>
+                            </div>
+                        </div>
+                        <div class="service-option" data-service="hydrafacial" data-duration="90" data-price="800">
+                            <div class="p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-accent transition-colors">
+                                <i class="fas fa-tint text-2xl text-accent mb-2"></i>
+                                <h4 class="font-bold">Hydrafacial</h4>
+                                <p class="text-sm text-gray-600">90 dakika</p>
+                                <p class="font-bold text-accent">₺800</p>
+                            </div>
+                        </div>
+                        <div class="service-option" data-service="masaj" data-duration="60" data-price="400">
+                            <div class="p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-accent transition-colors">
+                                <i class="fas fa-hands text-2xl text-accent mb-2"></i>
+                                <h4 class="font-bold">İsveç Masajı</h4>
+                                <p class="text-sm text-gray-600">60 dakika</p>
+                                <p class="font-bold text-accent">₺400</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end mt-6">
+                        <button id="next-step-1" class="btn-primary" disabled>Devam Et</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Staff Selection -->
+                <div id="step-2" class="appointment-step">
+                    <h3 class="text-xl font-bold mb-4">2. Uzman Seçimi</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="staff-option" data-staff="ayse">
+                            <div class="p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-accent transition-colors text-center">
+                                <img src="../images/team-1.jpg" alt="Ayşe Yılmaz" class="w-20 h-20 rounded-full mx-auto mb-3 object-cover">
+                                <h4 class="font-bold">Ayşe Yılmaz</h4>
+                                <p class="text-sm text-gray-600">Cilt Bakım Uzmanı</p>
+                            </div>
+                        </div>
+                        <div class="staff-option" data-staff="mehmet">
+                            <div class="p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-accent transition-colors text-center">
+                                <img src="../images/team-2.jpg" alt="Mehmet Kaya" class="w-20 h-20 rounded-full mx-auto mb-3 object-cover">
+                                <h4 class="font-bold">Mehmet Kaya</h4>
+                                <p class="text-sm text-gray-600">Masaj Terapisti</p>
+                            </div>
+                        </div>
+                        <div class="staff-option" data-staff="zeynep">
+                            <div class="p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-accent transition-colors text-center">
+                                <img src="../images/team-3.jpg" alt="Zeynep Demir" class="w-20 h-20 rounded-full mx-auto mb-3 object-cover">
+                                <h4 class="font-bold">Zeynep Demir</h4>
+                                <p class="text-sm text-gray-600">Wellness Koçu</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-6">
+                        <button onclick="previousStep()" class="btn-secondary">Geri</button>
+                        <button id="next-step-2" class="btn-primary" disabled>Devam Et</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Date & Time Selection -->
+                <div id="step-3" class="appointment-step">
+                    <h3 class="text-xl font-bold mb-4">3. Tarih ve Saat Seçimi</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold mb-3">Tarih Seçin</h4>
+                            <div id="calendar" class="bg-gray-50 p-4 rounded-lg">
+                                <!-- Calendar will be generated here -->
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-3">Saat Seçin</h4>
+                            <div id="time-slots" class="grid grid-cols-3 gap-2">
+                                <!-- Time slots will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-6">
+                        <button onclick="previousStep()" class="btn-secondary">Geri</button>
+                        <button id="next-step-3" class="btn-primary" disabled>Devam Et</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Customer Info -->
+                <div id="step-4" class="appointment-step">
+                    <h3 class="text-xl font-bold mb-4">4. Kişisel Bilgiler</h3>
+                    <form id="appointment-form">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Ad Soyad *</label>
+                                <input type="text" name="customer_name" required 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Telefon *</label>
+                                <input type="tel" name="customer_phone" required 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">E-posta</label>
+                                <input type="email" name="customer_email" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Yaş</label>
+                                <input type="number" name="customer_age" min="16" max="100" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium mb-2">Özel Notlar</label>
+                            <textarea name="notes" rows="3" 
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"></textarea>
+                        </div>
+                    </form>
+                    <div class="flex justify-between mt-6">
+                        <button onclick="previousStep()" class="btn-secondary">Geri</button>
+                        <button id="next-step-4" class="btn-primary">Randevu Özeti</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Confirmation -->
+                <div id="step-5" class="appointment-step">
+                    <h3 class="text-xl font-bold mb-4">5. Randevu Özeti</h3>
+                    <div id="appointment-summary" class="bg-gray-50 p-6 rounded-lg">
+                        <!-- Summary will be generated here -->
+                    </div>
+                    <div class="flex justify-between mt-6">
+                        <button onclick="previousStep()" class="btn-secondary">Geri</button>
+                        <button onclick="confirmAppointment()" class="btn-primary">Randevuyu Onayla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="../shining logo.png" alt="Shining Beauty" class="h-16 mb-4">
+                    <p class="text-gray-300">Adana'nın en modern spa ve wellness merkezi</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Hızlı Linkler</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-300 hover:text-accent">Ana Sayfa</a></li>
+                        <li><a href="hakkimizda.html" class="text-gray-300 hover:text-accent">Hakkımızda</a></li>
+                        <li><a href="hizmetler.html" class="text-gray-300 hover:text-accent">Hizmetler</a></li>
+                        <li><a href="galeri.html" class="text-gray-300 hover:text-accent">Galeri</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">İletişim</h4>
+                    <p class="text-gray-300 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Gazipaşa, Adana</p>
+                    <p class="text-gray-300 mb-2"><i class="fas fa-phone mr-2"></i>+90 505 071 95 01</p>
+                    <p class="text-gray-300"><i class="fas fa-envelope mr-2"></i>shinings.pw@ud.me</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Sosyal Medya</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl text-gray-300 hover:text-accent"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl text-gray-300 hover:text-accent"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl text-gray-300 hover:text-accent"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 Shining Beauty. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/appointment.js"></script>
+</body>
+</html>

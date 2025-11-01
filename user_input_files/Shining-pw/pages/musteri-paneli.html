@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müşteri Paneli | Shining Beauty</title>
+    <meta name="description" content="Randevularınızı yönetin, geçmişinizi görüntüleyin ve sadakat puanlarınızı takip edin.">
+    <link rel="icon" type="image/png" href="../shining logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/customer-panel.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center">
+                <img src="../shining logo.png" alt="Shining Beauty" class="h-12 w-auto">
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="../index.html" class="nav-link">Ana Sayfa</a>
+                <a href="hakkimizda.html" class="nav-link">Hakkımızda</a>
+                <a href="hizmetler.html" class="nav-link">Hizmetler</a>
+                <a href="galeri.html" class="nav-link">Galeri</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="iletisim.html" class="nav-link">İletişim</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-white">Hoş geldiniz, <strong id="customer-name">Ayşe Yılmaz</strong></span>
+                <button onclick="logout()" class="btn-secondary text-sm">Çıkış</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 min-h-screen">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Welcome Section -->
+            <div class="bg-gradient-to-r from-primary to-accent text-white rounded-lg p-8 mb-8">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-3xl font-bold mb-2">Müşteri Paneli</h1>
+                        <p class="text-lg opacity-90">Randevularınızı yönetin ve özel tekliflerimizi keşfedin</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-white bg-opacity-20 rounded-full p-4 mb-2">
+                            <i class="fas fa-star text-3xl"></i>
+                        </div>
+                        <p class="text-sm">Sadakat Puanı</p>
+                        <p class="text-2xl font-bold" id="loyalty-points">1,250</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="grid md:grid-cols-4 gap-4 mb-8">
+                <button onclick="showSection('new-appointment')" class="quick-action-btn">
+                    <i class="fas fa-calendar-plus text-2xl mb-2"></i>
+                    <span>Yeni Randevu</span>
+                </button>
+                <button onclick="showSection('appointments')" class="quick-action-btn">
+                    <i class="fas fa-calendar-alt text-2xl mb-2"></i>
+                    <span>Randevularım</span>
+                </button>
+                <button onclick="showSection('history')" class="quick-action-btn">
+                    <i class="fas fa-history text-2xl mb-2"></i>
+                    <span>Geçmiş</span>
+                </button>
+                <button onclick="showSection('profile')" class="quick-action-btn">
+                    <i class="fas fa-user text-2xl mb-2"></i>
+                    <span>Profilim</span>
+                </button>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <!-- Upcoming Appointments -->
+                    <section id="appointments-section" class="panel-section active">
+                        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                            <h2 class="text-xl font-bold mb-4">Yaklaşan Randevular</h2>
+                            <div id="upcoming-appointments" class="space-y-4">
+                                <!-- Appointments will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Past Appointments -->
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h2 class="text-xl font-bold mb-4">Geçmiş Randevular</h2>
+                            <div id="past-appointments" class="space-y-4">
+                                <!-- Past appointments will be loaded here -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- New Appointment Section -->
+                    <section id="new-appointment-section" class="panel-section">
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h2 class="text-xl font-bold mb-4">Yeni Randevu Al</h2>
+                            <p class="text-gray-600 mb-6">Hızlı randevu almak için aşağıdaki formu kullanabilirsiniz.</p>
+                            <button onclick="showAppointmentForm()" class="btn-primary">
+                                <i class="fas fa-calendar-plus mr-2"></i>Randevu Formu
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- History Section -->
+                    <section id="history-section" class="panel-section">
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h2 class="text-xl font-bold mb-4">Hizmet Geçmişi</h2>
+                            <div id="service-history" class="space-y-4">
+                                <!-- Service history will be loaded here -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Profile Section -->
+                    <section id="profile-section" class="panel-section">
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h2 class="text-xl font-bold mb-4">Profil Bilgileri</h2>
+                            <form id="profile-form">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Ad Soyad</label>
+                                        <input type="text" name="name" value="Ayşe Yılmaz" 
+                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Telefon</label>
+                                        <input type="tel" name="phone" value="+90 532 123 45 67" 
+                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">E-posta</label>
+                                        <input type="email" name="email" value="ayse@example.com" 
+                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Doğum Tarihi</label>
+                                        <input type="date" name="birthdate" value="1990-05-15" 
+                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent">
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="block text-sm font-medium mb-2">Özel Notlar</label>
+                                    <textarea name="notes" rows="3" 
+                                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-accent"
+                                              placeholder="Alerjiler, özel istekler vb."></textarea>
+                                </div>
+                                <div class="mt-6">
+                                    <button type="submit" class="btn-primary">Bilgileri Güncelle</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <!-- Loyalty Program -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                        <h3 class="text-lg font-bold mb-4">Sadakat Programı</h3>
+                        <div class="text-center mb-4">
+                            <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-crown text-2xl text-white"></i>
+                            </div>
+                            <p class="font-bold text-accent">Gold Üye</p>
+                            <p class="text-2xl font-bold text-primary">1,250 Puan</p>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span>Platinum'a kalan:</span>
+                                <span class="font-bold">750 puan</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 62.5%"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-accent-light rounded-lg">
+                            <p class="text-sm font-medium">Özel Teklif!</p>
+                            <p class="text-xs">500 puan ile ücretsiz cilt bakımı kazanın</p>
+                        </div>
+                    </div>
+
+                    <!-- Special Offers -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                        <h3 class="text-lg font-bold mb-4">Size Özel Teklifler</h3>
+                        <div class="space-y-4">
+                            <div class="border border-accent rounded-lg p-3">
+                                <h4 class="font-bold text-sm">%20 İndirim</h4>
+                                <p class="text-xs text-gray-600">Hydrafacial hizmetinde</p>
+                                <p class="text-xs text-accent">Son 3 gün!</p>
+                            </div>
+                            <div class="border border-accent rounded-lg p-3">
+                                <h4 class="font-bold text-sm">Ücretsiz Masaj</h4>
+                                <p class="text-xs text-gray-600">3 cilt bakımı alımında</p>
+                                <p class="text-xs text-accent">Sadece bu ay!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-bold mb-4">İstatistikler</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-sm">Toplam Randevu:</span>
+                                <span class="font-bold">24</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">Bu Yıl:</span>
+                                <span class="font-bold">12</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">Favori Hizmet:</span>
+                                <span class="font-bold text-accent">Cilt Bakımı</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">Üyelik Tarihi:</span>
+                                <span class="font-bold">Mart 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointment Detail Modal -->
+    <div id="appointment-detail-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md m-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold">Randevu Detayları</h3>
+                <button onclick="closeAppointmentDetail()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="appointment-detail-content">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/notifications.js"></script>
+    <script src="../assets/js/appointment.js"></script>
+    <script src="../assets/js/customer-panel.js"></script>
+</body>
+</html>

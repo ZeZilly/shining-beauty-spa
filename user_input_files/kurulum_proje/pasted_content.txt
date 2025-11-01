@@ -1,0 +1,242 @@
+Bu çalışma, shining.icu için Node.js (Express) + React + MongoDB Atlas temelli, randevu dönüşüm odaklı, erişilebilirlik ve performans standartlarına tam uyumlu, SEO dostu ve fiyat/ödeme göstermeden ilerleyen ileri seviye mimari ve uygulama planını içerir; ayrıca Manus AI concierge ajanı isteğe bağlı olarak diyalog tabanlı randevu yönlendirmesi için entegre edilebilir.[1][2][3][4]
+
+### Mimari özeti
+- Frontend: React 18, yönlendirme, dinamik SEO/OG/Twitter etiketleri, JSON‑LD, erişilebilirlik (WCAG 2.2 AA) ve Core Web Vitals odaklı performans.[2][3][5]
+- Backend: Node.js Express API, güvenlik katmanı (helmet, CORS, oran sınırlama), JWT + OAuth SSO, rol tabanlı yetkiler, MongoDB Atlas üzerinde Mongoose ile veri katmanı.[6][7]
+- Operasyon: Docker + Nginx ters vekil, TLS etkin dağıtım, CDN, günlük yedek, gözlemlenebilirlik ve hataya dayanıklılık; SEO ve site haritası, yapılandırılmış veri ve GA4/GTM ölçümlemesi.[8][1]
+
+### Ön yüz yapısı ve sayfalar
+- Hizmet detayları: /hizmetler/spa-masaj, /hizmetler/cilt-bakimi vb.; her sayfada başlık, açıklama, OG/Twitter, Service/LocalBusiness JSON‑LD, süre, faydalar, kontrendikasyonlar, önce/sonra galeri ve “Randevu Al”.[9][10][1]
+- Blog: /blog ve /blog/:slug; Markdown ya da headless CMS için yer tutucu ile içerik yönetimi ve zengin snippet’ler.[11][1]
+- Galeri ve filtreleme: Kategori filtreleriyle görsel listeleri, açıklamalı alt metinler ve klavye erişimi.[5][2]
+- Kampanyalar & VIP paketler: Fiyat yayınlanmadan özellik karşılaştırması ve fayda odaklı tablo, dönüşüm odaklı CTA’lar.[3][1]
+- SSS: Arama kutusu, accordion bileşenleri, semantic HTML ve ARIA ile erişilebilir etkileşim.[12][2]
+
+### SEO ve yapılandırılmış veri
+- Dinamik meta: Title/description, kanonik, OG/Twitter kartları, hreflang (varsa çok dilli), robots yönergeleri.[1][11]
+- JSON‑LD: LocalBusiness ve Service işaretlemeleri, Review ögeleri ile zengin sonuç uyumu (kişisel veri ve talimatlara uygun).[10][9]
+- Site haritası: Otomatik sitemap.xml üretimi, içerik güncellemelerinde yeniden oluşturma, Search Console entegrasyonuna hazır yapı.[11][1]
+
+Örnek LocalBusiness JSON‑LD:
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Shining Beauty & Wellness",
+  "url": "https://shining.icu",
+  "telephone": "+90-___-___-____",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "___",
+    "addressLocality": "İstanbul",
+    "addressRegion": "TR",
+    "postalCode": "34___",
+    "addressCountry": "TR"
+  },
+  "image": ["https://shining.icu/static/og.jpg"],
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "09:00",
+    "closes": "20:00"
+  }]
+}
+```
+
+
+### Erişilebilirlik
+- Standart: WCAG 2.2 AA hedefi, odak göstergeleri, yeterli kontrast, skip‑link, form etiketleri ve canlı bölgeler.[2][5]
+- İçerik: Alternatif metinler, klavye ile tam gezilebilirlik ve hareket hassasiyeti olan kullanıcılar için azaltılmış animasyon seçenekleri.[12][2]
+
+### Performans ve Core Web Vitals
+- Hedefler: LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1; 75. yüzdelik dilimde geçiş takibi ve bütçeler.[13][3]
+- Teknikler: Kod ayrıştırma, srcset/sizes ile duyarlı görseller, lazy loading, kritik CSS ve analiz tabanlı iyileştirme döngüsü.[3][8]
+
+### Sosyal medya ve gömme
+- Instagram: Galeri/anasayfada resmi oEmbed API üzerinden feed/post gömme, erişilebilir başlık ve yük optimizasyonu.[14][1]
+- WhatsApp temas opsiyonu: Cloud API veya tıklanabilir derin bağlantı ile iletişim, ancak randevu işlemleri sitede tamamlanır.[15][16]
+
+### Analitik ve etikiket yönetimi
+- GA4: gtag.js snippet entegrasyonu, dönüşüm olayları (randevu adımları, form gönderimleri) ve kitle segmentleri.[1][11]
+- GTM: Yer tutucu ile etiket/oynatıcı yönetimi; çerez tercih merkezi ile ölçüme koşullu izin.[8][1]
+
+### Çerez onayı ve KVKK
+- Tercih bazlı mekanizma: Zorunlu/istatistik/pazarlama ayrımı, açık rıza ve sonradan değiştirme paneli, erişilebilir bileşenler.[2][12]
+- Veri minimizasyonu: Sadece gerekli alanlar, saklama süreleri ve kullanıcı isteklerine hızlı yanıt politikası.[7][6]
+
+### Sunucu (Express) ve API yüzeyleri
+- Route grupları: /api/auth, /api/appointments, /api/services, /api/reviews, /api/blog, /api/admin; CORS sadece https://shining.icu için açık.[6][7]
+- Güvenlik: helmet, oran sınırlama, giriş denemesi sınırları, giriş doğrulama ve girdilerde sanitizasyon; hata ve erişim günlükleri.[17][6]
+
+Örnek güvenlik orta katmanları:
+```js
+app.set('trust proxy', 1);
+app.use(helmet());
+app.use(cors({ origin: ['https://shining.icu'], credentials: true }));
+app.use(rateLimit({ windowMs: 15*60*1000, max: 300 }));
+app.use(express.json({ limit: '1mb' }));
+```
+
+
+### Ortam değişkenleri
+- MONGO_URI, JWT_SECRET, SMTP_HOST, SMTP_USER, SMTP_PASS, OAUTH_GOOGLE_ID/SECRET, SMS_PROVIDER_KEYS; ödeme yok, bu nedenle IYZICO_CREDENTIALS hariç.[7][6]
+- Gizli anahtar yönetimi: Ayrı gizli kasa/CI değişkenleri, prod‑only erişim ve rotasyon politikaları.[6][17]
+
+### Mongoose veri modeli
+- Modeller: User, Appointment, Service, Review, BlogPost, Staff, LoyaltyPoint, GiftCard; denetim damgaları ve indeksler.[7][6]
+
+Örnek şemalar:
+```js
+const Service = new Schema({
+  slug: { type: String, unique: true, index: true },
+  title: String,
+  durationMin: Number,
+  benefits: [String],
+  contraindications: [String],
+  gallery: [String],
+  active: { type: Boolean, default: true }
+}, { timestamps: true });
+
+const Staff = new Schema({
+  name: String,
+  bio: String,
+  specialties: [String],
+  availability: [{ day: Number, start: String, end: String }]
+}, { timestamps: true });
+
+const Appointment = new Schema({
+  userId: { type: ObjectId, ref: 'User', index: true },
+  serviceId: { type: ObjectId, ref: 'Service' },
+  staffId: { type: ObjectId, ref: 'Staff' },
+  start: Date,
+  end: Date,
+  note: String,
+  status: { type: String, enum: ['pending','confirmed','cancelled'], default: 'pending' }
+}, { timestamps: true });
+Appointment.index({ staffId: 1, start: 1, end: 1 }, { unique: true, partialFilterExpression: { status: { $ne: 'cancelled' } } });
+```
+
+
+### Randevu iş kuralları
+- Çakışma önleme: Personel bazında zaman aralığı benzersizliği ve iş saatlerine uygunluk kontrolü.[17][6]
+- Onay akışı: E‑posta onayı, iptal ve hatırlatmalar; SMS hatırlatma için yerel sağlayıcı anahtarlarıyla 24s/2s tetikleme.[11][6]
+
+Örnek endpoint (POST /api/appointments):
+```js
+router.post('/', validateBody, async (req,res) => {
+  const { serviceId, staffId, start } = req.body;
+  const svc = await ServiceModel.findById(serviceId);
+  const stf = await StaffModel.findById(staffId);
+  const end = new Date(new Date(start).getTime() + svc.durationMin*60000);
+  const overlap = await AppointmentModel.findOne({
+    staffId, status: { $ne: 'cancelled' },
+    $or: [{ start: { $lt: end, $gte: start } }, { end: { $gt: start, $lte: end } }, { start: { $lte: start }, end: { $gte: end } }]
+  });
+  if (overlap) return res.status(409).json({ message: 'Bu saat dilimi dolu.' });
+  const appt = await AppointmentModel.create({ ...req.body, end });
+  res.status(201).json(appt);
+});
+```
+
+
+### Kimlik doğrulama ve SSO
+- Local + JWT (erişim/yenileme belirteci), zorunlu KVKK onay kutusu, parola politikaları ve 2FA opsiyonu.[7][6]
+- OAuth: Google/Facebook/Apple stratejileri için Passport tabanlı akış, kapsam minimizasyonu ve devlet geri çağırma URL’leri.[6][17]
+
+### Analitik ve deney
+- Olay şeması: Randevu hunisi (service_select, staff_select, date_select, submit), terk ve geri dönüş tetikleyicileri.[8][11]
+- Panolar: Rezervasyon sayısı, dönüşüm oranı, tekrar randevu ve sayfa deney metrikleri ile karar destek.[3][8]
+
+### İçerik yer tutucular
+- Blog: 5 makale başlığı + kısa özet ve anahtar kelime planı (tam metinler yayın aşamasında üretilecek).[1][11]
+  - “Spa Masajı: Faydalar, Süre ve Kimler İçin Uygun?” — niyet: bilgilendirici, sorgular: spa masajı faydaları/süre/kontrendikasyon.[11][1]
+  - “Cilt Bakımında Profesyonel Protokoller ve Ev Rutini” — niyet: karma, sorgular: profesyonel cilt bakımı/ev bakımı farkı.[1][11]
+  - “Lazer Epilasyon Öncesi/Sonrası Bakım Rehberi” — niyet: işlemsel‑bilgilendirici.[11][1]
+  - “Duyarlı Ciltler İçin Güzellik Hizmetlerinde Dikkat Edilecekler” — niyet: bilgilendirici.[1][11]
+  - “Masaj Çeşitleri: İsveç, Derin Doku, Aromaterapi Karşılaştırması” — niyet: karşılaştırmalı rehber.[11][1]
+- Yorumlar: 10 kadın müşteri yorumu için yer tutucu alanları (ad, hizmet, tarih, puan, metin) ve yayın öncesi moderasyon akışı.[9][1]
+- Ekip profilleri: 3 uzman profili (uzmanlıklar, eğitimler, uygunluk saatleri) ve hizmet sayfalarına bağlama.[9][1]
+
+### Admin panel
+- Yetkili SPA: Randevu yönetimi, hizmet CRUD, blog editörü, yorum moderasyon ve personel uygunluk planlama; rol bazlı görünürlük.[17][6]
+- Günlükleme: Tüm kritik idari işlemler için denetim izi ve geri alma prosedürleri.[6][17]
+
+### Dağıtım ve altyapı
+- Konteynerler: Web, API, Mongo, Nginx ters vekil; Cloud/CDN önbellekleme ve HTTP/2+TLS zorlama.[17][6]
+- Site haritası ve robots: Otomatik üretim, arama motoru yönergelerine uyum ve kapalı sayfaların engellenmesi.[1][11]
+
+### İzleme, yedek ve olay yönetimi
+- Gözlemlenebilirlik: Hata izleme, iz/metric korelasyonu, performans uyarıları ve Core Web Vitals alan ölçümü.[3][8]
+- Yedekleme: Günlük Atlas anlık görüntüleri ve haftalık tam dışa aktarım; geri dönüş tatbikatları.[6][17]
+
+### React yönlendirme, SEO ve randevu formu iskeleti
+- Yönlendirme: SEO dostu yollar ve lazy yükleme ile sayfa bazlı ayrıştırma.[3][1]
+- Form doğrulama: TR telefon formatı, e‑posta, boş alan ve tarih/saat seçici için istemci tarafı hatalar TR mesajlarla.[2][1]
+
+Örnek React rotaları ve Helmet:
+```jsx
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/hizmetler/:slug" element={<ServiceDetail />} />
+  <Route path="/blog" element={<BlogList />} />
+  <Route path="/blog/:slug" element={<BlogPost />} />
+  <Route path="/galeri" element={<Gallery />} />
+  <Route path="/kampanyalar" element={<Campaigns />} />
+  <Route path="/sss" element={<FAQ />} />
+</Routes>
+
+// ServiceDetail içinde
+<Helmet>
+  <title>{`${service.title} | Shining Beauty & Wellness`}</title>
+  <meta name="description" content={service.metaDescription} />
+  <meta property="og:type" content="website" />
+</Helmet>
+```
+
+
+Örnek randevu formu bileşeni:
+```jsx
+<form onSubmit={handleSubmit}>
+  <ServiceSelect required />
+  <StaffSelect />
+  <DateTimePicker minDate={today} required />
+  <input type="tel" pattern="^\\+?90\\s?5\\d{2}\\s?\\d{3}\\s?\\d{2}\\s?\\d{2}$" required aria-describedby="telHelp" />
+  <small id="telHelp">Telefon formatı: 05xx xxx xx xx</small>
+  <textarea name="note" maxLength={500} />
+  <button type="submit">Randevu Al</button>
+</form>
+```
+
+
+### Manus AI concierge (opsiyonel)
+- Niyet yakalama: Hizmet önerisi, uygunluk kontrolü, formu ön doldurma ve insan onayı akışları ile düşük sürtünmeli randevu.[4][18]
+- Güvenlik: Ajanın yetkili uçlara sınırlı erişimi, işlem günlüğü ve onay eşikleri.[17][6]
+
+### Yol haritası (8 hafta)
+- Hafta 1–2: IA/UX, erişilebilir tasarım bileşenleri, veri modeli ve temel API.[2][6]
+- Hafta 3–4: Hizmet detayları, randevu akışı, e‑posta/SMS hatırlatmaları ve admin panel MVP.[11][6]
+- Hafta 5–6: SEO/JSON‑LD, sitemap, GA4/GTM, Instagram oEmbed ve performans bütçeleri.[14][1]
+- Hafta 7: Docker/Nginx, CDN/TLS, yedek‑gözlem ve üretim sertleştirme.[6][17]
+- Hafta 8: Manus AI concierge entegrasyonu ve canlı izleme‑iyileştirme döngüsü.[4][8]
+
+Bu plan, fiyat göstermeden ve online ödeme almadan randevu dönüşümüne odaklanan; WCAG 2.2, Core Web Vitals ve Google SEO yönergelerine uyumlu; güvenli, ölçeklenebilir ve ajans‑seviyesinde modern bir platform kurulumunu uçtan uca tanımlar.[2][3][1]
+
+Kilder
+[1] SEO Starter Guide: The Basics | Google Search Central https://developers.google.com/search/docs/fundamentals/seo-starter-guide
+[2] Web Content Accessibility Guidelines (WCAG) 2.2 https://www.w3.org/TR/WCAG22/
+[3] Web Vitals | Articles https://web.dev/articles/vitals
+[4] #1 Manus AI - The World's First General-Purpose AI Assistant ... https://www.manusai.io
+[5] Web Content Accessibility Guidelines (WCAG) 2 Level AA ... https://www.w3.org/WAI/WCAG2AA-Conformance
+[6] OWASP Application Security Verification Standard (ASVS) https://owasp.org/www-project-application-security-verification-standard/
+[7] OWASP/ASVS: Application Security Verification Standard https://github.com/OWASP/ASVS
+[8] Getting started with measuring Web Vitals | Articles https://web.dev/articles/vitals-measurement-getting-started
+[9] Local Business (LocalBusiness) Structured Data https://developers.google.com/search/docs/appearance/structured-data/local-business
+[10] LocalBusiness - Schema.org Type https://schema.org/LocalBusiness
+[11] Documentation to Improve SEO | Google Search Central https://developers.google.com/search/docs
+[12] Understanding WCAG 2.2 - Service Manual https://www.gov.uk/service-manual/helping-people-to-use-your-service/understanding-wcag
+[13] How the Core Web Vitals metrics thresholds were defined https://web.dev/articles/defining-core-web-vitals-thresholds
+[14] oEmbed - Instagram Platform - Meta for Developers https://developers.facebook.com/docs/instagram-platform/oembed/
+[15] WhatsApp Cloud API - Documentation https://developers.facebook.com/docs/whatsapp/cloud-api/
+[16] Get Started - WhatsApp Cloud API https://developers.facebook.com/docs/whatsapp/cloud-api/get-started/
+[17] OWASP Application Security Verification Standard (ASVS) https://nest.owasp.org/projects/application-security-verification-standard
+[18] Manus API: Overview https://open.manus.ai/docs
